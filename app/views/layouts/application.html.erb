@@ -8,7 +8,19 @@
 </head>
 <body>
 
-<%= yield %>
+  <div id="wrapper">
+    <header>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+       <p class="sign_in">
+         <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+       </p>
+    </header>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>
