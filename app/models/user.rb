@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :omniauthable, :rememberable, :trackable
+  devise :omniauthable, :database_authenticatable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :image_url, :firstname, :lastname
+  attr_accessible :email, :password, :image_url, :firstname, :lastname
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -22,5 +22,13 @@ class User < ActiveRecord::Base
       user.image_url = info.image
       user.save
     end
+  end
+
+  def build_post(post)
+    posts.build(post)
+  end
+
+  def find_post(id)
+    posts.find(id)
   end
 end
