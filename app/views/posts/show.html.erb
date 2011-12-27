@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <p>
+    <img src="<%= current_user.image_url %>" alt="avatar" />
+    <%= current_user.firstname %>
+    <%= current_user.lastname %>
+  </p>
   <b>Content:</b>
   <%= @post.content %>
 </p>
