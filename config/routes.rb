@@ -1,5 +1,9 @@
 Dajpieroga::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    member do
+      get 'publish'
+    end
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } do
     get 'sign_in', to: 'users/sessions#new', as: :new_user_session

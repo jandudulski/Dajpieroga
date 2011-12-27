@@ -7,9 +7,12 @@
     <%= current_user.lastname %>
   </p>
   <b>Content:</b>
-  <%= @post.content %>
+  <p id="post_<%= @post.id %>">
+    <%= @post.content %>
+  </p>
 </p>
 
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Publish', post_path(@post), :class => 'publish', 'data-publish' => "post_#{@post.id}" %> |
 <%= link_to 'Back', posts_path %>

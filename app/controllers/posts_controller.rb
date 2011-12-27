@@ -81,4 +81,14 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def publish
+    @post = Post.find(params[:id])
+    @post.publish
+
+    respond_to do |format|
+      format.html { redirect_to @post, notice: 'Post published on your wall.' }
+      format.json { render :no_content }
+    end
+  end
 end
